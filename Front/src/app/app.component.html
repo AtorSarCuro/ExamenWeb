@@ -1,0 +1,29 @@
+﻿<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+    <a class="nav-item nav-link" (click)="logout()">{{'logoutLabel'|translate}}</a>
+    <span class="form-inline">
+  <select
+    class="form-control"
+    #selectedLang
+    (change)="switchLang(selectedLang.value)">
+    <option *ngFor="let language of translateService.getLangs()"
+            [value]="language"
+            [selected]="language === translateService.currentLang">
+      {{ language }}
+    </option>
+  </select>
+</span>
+
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="text-center mt-4">
+  <p>
+    <a>Oscar Arturo Cruz Simon</a>
+  </p>
+</div>
